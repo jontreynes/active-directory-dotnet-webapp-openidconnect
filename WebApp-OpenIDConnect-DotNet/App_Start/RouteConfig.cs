@@ -14,6 +14,12 @@ namespace WebApp_OpenIDConnect_DotNet
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Math",
+                "math",
+                new { controller = "Math", action = "MathForm"}
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApp_OpenIDConnect_DotNet.Controllers
 {
-    
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

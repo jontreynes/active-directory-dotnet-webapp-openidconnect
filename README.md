@@ -7,7 +7,7 @@ client: ASP.NET 4.x Web App
 service: 
 endpoint: AAD V1
 ---
-# Integrate Azure AD into a web application using OpenID Connect
+# Integrate Azure AD into a web application using OpenID Connect and Create a Controller that Call an Azure Function
 
 ![Build badge](https://identitydivision.visualstudio.com/_apis/public/build/definitions/a7934fdd-dcde-4492-a406-7fad6ac00e17/534/badge)
 ## About this sample
@@ -20,10 +20,27 @@ For more information about how the protocols work in this scenario and other sce
 
 ![Overview](./ReadmeFiles/topology.png)
 
+In addition, this application will call an external endpoint via a POST Rest Call.
+
+Note* The MathModelClass' regular expression can be fixed to accept all types of numbers. Also, the Azure Function can be more robust. I am just trying to show you how you may call an external REST endpoint from this type of application.
+
+
 ### Scenario
 
 Run the application, and press the **sign-in** button. you are signed-in, and have to consent for the application to access your profile.
 When you have signed-in, the **Sign-out** button appears, which you can press to sign-out from the application
+
+**sign-in** again and navigate to the Math tab. Input an integers to the 2 fields and click add. The Azure function will be called upon add.
+
+## Create the Azure Function
+
+Under the AzureFunctionsProject folder, you will see a default template under HttpTriggerCSharp1. I edited it to do addition on input taken from json. The json schema should look like the MathModelClass class. 
+
+The edited function source code will be found under AzureFunctionsProject/Add_Math_fxn_CSharp2/run.csx.
+Please copy paste this source code to your Azure Function. Once your function created, navigate to the </> Get function URL in the Azure Functions blade in the Azure portal and copy the URL. Paste it into the MathController.cs AzFxnAdd uri defintion.
+
+Note: I suggest you complete the rest of the steps before completing this one to ensure your Azure AD app registration is working properly.
+
 
 ## How To Run This Sample
 
