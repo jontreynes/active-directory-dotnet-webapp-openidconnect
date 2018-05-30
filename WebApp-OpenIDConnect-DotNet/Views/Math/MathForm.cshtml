@@ -1,0 +1,27 @@
+﻿@model WebApp_OpenIDConnect_DotNet.Models.MathModelClass
+
+@{
+    ViewBag.Title = "Math";
+}
+
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+@using (Html.BeginForm()) {
+    @Html.LabelFor(model => model.x_number)<br />
+    @Html.TextBoxFor(model => model.x_number)<br />
+    @Html.ValidationMessageFor(model => model.x_number)<br />
+
+    @Html.LabelFor(model => model.y_number)<br />
+    @Html.TextBoxFor(model => model.y_number)<br />
+    @Html.ValidationMessageFor(model => model.y_number)<br />
+
+    <button type="submit">Add</button>
+
+}
+
+@if (TempData["notice"] != null) {
+    <h1>@TempData["notice"]</h1>
+}
